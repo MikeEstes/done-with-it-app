@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, View, Platform, StatusBar } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 
 import colors from '../config/colors';
 
