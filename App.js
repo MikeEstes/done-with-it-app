@@ -1,18 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import WelcomeScreen from './src/screens/WelcomeScreen';
-import ViewImageScreen from './src/screens/ViewImageScreen';
-import AppText from './src/components/AppText';
-import AppButton from './src/components/AppButton';
-import Card from './src/components/Card';
-import ListingDetailsScreen from './src/screens/ListingDetailsScreen';
+import MessagesScreen from './src/screens/MessagesScreen';
 
 export default function App() {
   return (
-    <View>
-      <ViewImageScreen />
-    </View>
+    <>
+      <MessagesScreen />
+    </>
   );
 }
 

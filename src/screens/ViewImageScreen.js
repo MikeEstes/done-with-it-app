@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
 
-function ViewImageScreen() {
+const ViewImageScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.closeIcon}>
@@ -24,7 +24,7 @@ function ViewImageScreen() {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -46,4 +46,5 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 });
+
 export default ViewImageScreen;

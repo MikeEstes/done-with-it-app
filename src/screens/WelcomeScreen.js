@@ -2,12 +2,10 @@ import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import AppButton from '../components/AppButton';
 
-import colors from '../config/colors';
-
-function WelcomeScreen(props) {
+const WelcomeScreen = () => {
   return (
     <ImageBackground
-      blurRadius={5}
+      blurRadius={10}
       style={styles.background}
       source={require('../assets/background.jpg')}>
       <View style={styles.logoContainer}>
@@ -20,7 +18,7 @@ function WelcomeScreen(props) {
       </View>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   background: {
