@@ -3,4 +3,5 @@ export default {
   secondary: '#4ECDC4',
   black: '#000',
   white: '#FFF',
+  medium: '#6E6969',
 };
