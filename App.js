@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, View } from 'react-native';
 
 import MessagesScreen from './src/screens/MessagesScreen';
 import Screen from './src/components/Screen';
@@ -9,7 +9,19 @@ import AccountScreen from './src/screens/AccountScreen';
 import ListingsScreen from './src/screens/ListingsScreen';
 
 export default function App() {
-  return <ListingsScreen />;
+  const [firstName, setFirstName] = useState('');
+
+  return (
+    <Screen>
+      <TextInput
+        maxLength={10}
+        keyboardType='numeric'
+        onChangeText={(text) => setFirstName(text)}
+        placeholder='First Name'
+        style={{ borderBottomColor: '#CCC', borderBottomWidth: 1 }}
+      />
+    </Screen>
+  );
 }
 
 const styles = StyleSheet.create({
