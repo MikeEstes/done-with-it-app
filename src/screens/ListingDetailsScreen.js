@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
-import AppText from '../components/AppText';
-import ListItem from '../components/ListItem';
-import colors from '../config/colors';
+import AppText from '../components/Text';
+import defaultStyles from '../config/styles';
+import { ListItem } from '../components/lists';
 
 const ListingDetailsScreen = () => {
   return (
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: colors.secondary,
+    color: defaultStyles.colors.secondary,
     marginVertical: 10,
   },
   title: {

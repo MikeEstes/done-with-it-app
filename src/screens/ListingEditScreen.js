@@ -1,12 +1,8 @@
 import React from 'react';
 import * as Yup from 'yup';
 
-import {
-  AppForm,
-  AppFormField,
-  AppFormPicker,
-  SubmitButton,
-} from '../components/forms';
+import { Form, FormField, FormPicker, SubmitButton } from '../components/forms';
+import CategoryPickerItem from '../components/CategoryPickerItem';
 import Screen from '../components/Screen';
 import styles from '../config/styles';
 
@@ -18,15 +14,15 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-  { label: 'Furniture', value: 1 },
-  { label: 'Clothing', value: 2 },
-  { label: 'Cameras', value: 3 },
+  { label: 'Furniture', value: 1, backgroundColor: 'red', icon: 'app' },
+  { label: 'Clothing', value: 2, backgroundColor: 'green', icon: 'email' },
+  { label: 'Cameras', value: 3, backgroundColor: 'blue', icon: 'lock' },
 ];
 
 const ListingEditScreen = () => {
   return (
     <Screen style={styles.container}>
-      <AppForm
+      <Form
         initialValues={{
           title: '',
           price: '',
@@ -35,19 +31,23 @@ const ListingEditScreen = () => {
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}>
-        <AppFormField maxLength={255} name='title' placeholder='Title' />
-        <AppFormField
+        <FormField maxLength={255} name='title' placeholder='Title' />
+        <FormField
           keyboardType='numeric'
           maxLength={8}
           name='price'
           placeholder='Price'
+          width={120}
         />
-        <AppFormPicker
+        <FormPicker
           items={categories}
           name='category'
+          numberOfColumns={3}
+          PickerItemComponent={CategoryPickerItem}
           placeholder='Category'
+          width={'50%'}
         />
-        <AppFormField
+        <FormField
           maxLength={255}
           multiline
           name='description'
@@ -55,7 +55,7 @@ const ListingEditScreen = () => {
           placeholder='Description'
         />
         <SubmitButton title='Post' />
-      </AppForm>
+      </Form>
     </Screen>
   );
 };
