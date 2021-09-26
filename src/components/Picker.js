@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import Text from './Text';
-import defaultStyles from '../config/styles';
+import colors from '../config/colors';
 import PickerItem from './PickerItem';
 import Screen from './Screen';
+import Text from './Text';
 
 const Picker = ({
   icon,
@@ -34,7 +34,7 @@ const Picker = ({
             <MaterialCommunityIcons
               name={icon}
               size={20}
-              color={defaultStyles.colors.medium}
+              color={colors.medium}
               style={styles.icon}
             />
           )}
@@ -46,7 +46,7 @@ const Picker = ({
           <MaterialCommunityIcons
             name='chevron-down'
             size={20}
-            color={defaultStyles.colors.medium}
+            color={colors.medium}
           />
         </View>
       </TouchableWithoutFeedback>
@@ -76,7 +76,7 @@ const Picker = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: defaultStyles.colors.light,
+    backgroundColor: colors.light,
     borderRadius: 25,
     flexDirection: 'row',
     padding: 15,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   placeholder: {
-    color: defaultStyles.colors.medium,
+    color: colors.medium,
     flex: 1,
   },
   text: {

@@ -9,7 +9,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import defaultStyles from '../config/styles';
+import colors from '../config/colors';
 
 const ImageInput = ({ imageUri, onChangeImage }) => {
   useEffect(() => {
@@ -47,7 +47,7 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
       <View style={styles.container}>
         {!imageUri && (
           <MaterialCommunityIcons
-            color={defaultStyles.colors.medium}
+            color={colors.medium}
             name='camera'
             size={40}
           />
@@ -61,7 +61,7 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: defaultStyles.colors.light,
+    backgroundColor: colors.light,
     borderRadius: 15,
     height: 100,
     justifyContent: 'center',
