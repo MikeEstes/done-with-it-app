@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormikContext } from 'formik';
 
-import AppPicker from '../Picker';
+import Picker from '../Picker';
 import ErrorMessage from './ErrorMessage';
 import { number } from 'yup/lib/locale';
 
@@ -17,7 +17,7 @@ const AppFormPicker = ({
 
   return (
     <>
-      <AppPicker
+      <Picker
         items={items}
         numberOfColumns={numberOfColumns}
         onSelectItem={(item) => setFieldValue(name, item)}
