@@ -8,7 +8,7 @@ import routes from './routes';
 const Stack = createStackNavigator();
 
 const AccountNavigator = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
+  <Stack.Navigator>
     <Stack.Screen name={routes.ACCOUNT} component={AccountScreen} />
     <Stack.Screen name={routes.MESSAGES} component={MessagesScreen} />
   </Stack.Navigator>

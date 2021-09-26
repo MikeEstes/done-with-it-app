@@ -9,11 +9,8 @@ const Stack = createStackNavigator();
 
 const FeedNavigatior = () => (
   <Stack.Navigator
-    screenOptions={{
-      gestureEnabled: true,
-      headerShown: false,
-      presentation: 'modal',
-    }}>
+    mode='modal'
+    screenOptions={{ gestureEnabled: true, headerShown: false }}>
     <Stack.Screen name={routes.LISTINGS} component={ListingsScreen} />
     <Stack.Screen
       name={routes.LISTING_DETAILS}
