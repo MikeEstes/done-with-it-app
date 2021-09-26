@@ -1,28 +1,42 @@
-import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, StyleSheet } from 'react-native';
 
+import Button from '../components/Button';
 import Card from '../components/Card';
-import Screen from '../components/Screen';
 import colors from '../config/colors';
-
-const listings = [
-  {
-    id: 1,
-    title: 'Red Jacket for Sale',
-    price: '$100',
-    image: require('../assets/jacket.jpg'),
-  },
-  {
-    id: 2,
-    title: 'Couch in Great Condition',
-    price: '$1,000',
-    image: require('../assets/couch.jpg'),
-  },
-];
+import listingsApi from '../api/listings';
+import Screen from '../components/Screen';
+import Text from '../components/Text';
 
 const ListingsScreen = ({ navigation }) => {
+  const [listings, setListings] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    loadListings();
+  }, []);
+
+  const loadListings = async () => {
+    setLoading(true);
+    const response = await listingsApi.getListings();
+    setLoading(false);
+
+    if (!response.ok) return setError(true);
+
+    setError(false);
+    setListings(response.data);
+  };
+
   return (
     <Screen style={styles.screen}>
+      {error && (
+        <>
+          <Text>Couldn't retrieve the listings.</Text>
+          <Button title='Retry' onPress={loadListings} />
+        </>
+      )}
+      <ActivityIndicator animating={loading} size='large' color='#000' />
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -30,7 +44,7 @@ const ListingsScreen = ({ navigation }) => {
           <Card
             title={item.title}
             subtitle={item.price}
-            image={item.image}
+            imageUrl={item.images[0].url}
             onPress={() => navigation.navigate('ListingDetails', item)}
           />
         )}
