@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
+import ActivityIndicator from '../components/ActivityIndicator';
 import authApi from '../api/auth';
 import {
   ErrorMessage,
@@ -9,11 +10,11 @@ import {
   FormField,
   SubmitButton,
 } from '../components/forms';
+import logger from '../utility/logger';
 import Screen from '../components/Screen';
 import useApi from '../hooks/useApi';
 import useAuth from '../auth/useAuth';
 import usersApi from '../api/users';
-import ActivityIndicator from '../components/ActivityIndicator';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().label('Name'),
@@ -35,7 +36,7 @@ const RegisterScreen = () => {
         if (result.data) setError(result.data.error);
         else {
           setError('An unexpected error occured.');
-          console.log(result);
+          logger.log(result);
         }
         return;
       }
@@ -46,7 +47,7 @@ const RegisterScreen = () => {
       );
       auth.logIn(authToken);
     } catch (error) {
-      console.log(error);
+      logger.log(error);
     }
   };
 

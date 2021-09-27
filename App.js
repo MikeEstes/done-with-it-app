@@ -8,7 +8,10 @@ import authStorage from './src/auth/storage';
 import AuthContext from './src/auth/context';
 import navigationTheme from './src/navigation/navigationTheme';
 import { navigationRef } from './src/navigation/rootNavigation';
+import logger from './src/utility/logger';
 import OfflineNotice from './src/components/OfflineNotice';
+
+logger.start();
 
 export default function App() {
   const [user, setUser] = useState();

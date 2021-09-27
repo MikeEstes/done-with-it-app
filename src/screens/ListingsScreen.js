@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import Card from '../components/Card';
 import colors from '../config/colors';
 import listingsApi from '../api/listings';
+import logger from '../utility/logger';
 import routes from '../navigation/routes';
 import Screen from '../components/Screen';
 import Text from '../components/Text';
@@ -24,7 +25,7 @@ const ListingsScreen = ({ navigation }) => {
     try {
       await getListingsApi.request();
     } catch (error) {
-      console.log('Error refreshing listings.', error);
+      logger.log('Error refreshing listings.', error);
     }
     setRefreshing(false);
   };

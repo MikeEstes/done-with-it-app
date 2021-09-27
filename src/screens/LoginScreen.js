@@ -9,6 +9,7 @@ import {
   FormField,
   SubmitButton,
 } from '../components/forms';
+import logger from '../utility/logger';
 import Screen from '../components/Screen';
 import useAuth from '../auth/useAuth';
 
@@ -28,7 +29,7 @@ const LoginScreen = () => {
       setLoginFailed(false);
       logIn(result.data);
     } catch (error) {
-      console.log(error);
+      logger.log(error);
     }
   };
 

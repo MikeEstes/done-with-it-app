@@ -4,6 +4,7 @@ import * as Notifications from 'expo-notifications';
 import * as Yup from 'yup';
 
 import { Form, FormField, SubmitButton } from './forms';
+import logger from '../utility/logger';
 import messagesApi from '../api/messages';
 
 const ContactSellerForm = ({ listing }) => {
@@ -14,14 +15,14 @@ const ContactSellerForm = ({ listing }) => {
       const result = await messagesApi.send(message, listing.id);
 
       if (!result.ok) {
-        console.log('Error', result);
+        logger.log('Error', result);
         return Alert.alert(
           'Error',
           'Could not send the message to the seller.'
         );
       }
     } catch (error) {
-      console.log(error);
+      logger.log(error);
     }
 
     resetForm();
