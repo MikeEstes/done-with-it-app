@@ -3,11 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 
 import AppNavigator from './src/navigation/AppNavigator';
+import AuthNavigator from './src/navigation/AuthNavigator';
 import authStorage from './src/auth/storage';
 import AuthContext from './src/auth/context';
 import navigationTheme from './src/navigation/navigationTheme';
+import { navigationRef } from './src/navigation/rootNavigation';
 import OfflineNotice from './src/components/OfflineNotice';
-import AuthNavigator from './src/navigation/AuthNavigator';
 
 export default function App() {
   const [user, setUser] = useState();
@@ -29,7 +30,7 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
       <OfflineNotice />

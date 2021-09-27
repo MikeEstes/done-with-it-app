@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import ActivityIndicator from '../components/ActivityIndicator';
@@ -13,10 +13,21 @@ import useApi from '../hooks/useApi';
 
 const ListingsScreen = ({ navigation }) => {
   const getListingsApi = useApi(listingsApi.getListings);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     getListingsApi.request();
   }, []);
+
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    try {
+      await getListingsApi.request();
+    } catch (error) {
+      console.log('Error refreshing listings.', error);
+    }
+    setRefreshing(false);
+  };
 
   return (
     <>
@@ -40,6 +51,8 @@ const ListingsScreen = ({ navigation }) => {
               thumbnailUrl={item.images[0].thumbnailUrl}
             />
           )}
+          refreshing={refreshing}
+          onRefresh={() => handleRefresh}
         />
       </Screen>
     </>
