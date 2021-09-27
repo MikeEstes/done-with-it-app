@@ -42,7 +42,8 @@
     "react-native-screens": "~3.4.0",
     "react-native-svg": "^12.1.1",
     "react-native-web": "^0.17.1",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "expo-notifications": "~0.12.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
